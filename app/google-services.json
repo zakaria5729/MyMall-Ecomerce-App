@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "614384801719",
+    "firebase_url": "https://myecomerce-fdc20.firebaseio.com",
+    "project_id": "myecomerce-fdc20",
+    "storage_bucket": "myecomerce-fdc20.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:614384801719:android:e92c182b34ad3393",
+        "android_client_info": {
+          "package_name": "com.zakariahossain.ecomerceapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "614384801719-p42o0dbc835jm7godso5lj1jr6igvb3j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.zakariahossain.ecomerceapp",
+            "certificate_hash": "dc0099a52deed1dd5c50677fa87010e0511d0e92"
+          }
+        },
+        {
+          "client_id": "614384801719-7vcjdl2sh4g3d1nf571pqvpolmq8v2ah.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoog0-SyutJmIsucJLLLnpdhPpb_-s1fA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "614384801719-7vcjdl2sh4g3d1nf571pqvpolmq8v2ah.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
