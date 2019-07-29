@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:elevation="3dp">
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/productDetailsImgViewPager"
+            android:layout_width="0dp"
+            android:layout_height="250sp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabViewPagerIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/productDetailsImgViewPager"
+            app:tabBackground="@drawable/dot_selector"
+            app:tabIndicatorHeight="0dp"
+            app:tabRippleColor="@null" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabWishList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@android:color/white"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:rippleColor="@color/colorAccent"
+            app:srcCompat="@drawable/ic_favorite_black_24dp"
+            app:tint="@android:color/darker_gray" />
+
+        <TextView
+            android:id="@+id/tvProductTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Product Title"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tabViewPagerIndicator" />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rectangle_background"
+            android:backgroundTint="@color/colorSuccess"
+            android:padding="1dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvProductTitle">
+
+            <TextView
+                android:id="@+id/tvProductRatingMiniView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="2dp"
+                android:text="4.5"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="3dp"
+                android:src="@drawable/ic_star_black_24dp"
+                android:tint="@android:color/white" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvTotalRatingMiniView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="(8540) ratings"
+            android:textAppearance="?android:textAppearanceSmall"
+            app:layout_constraintBottom_toBottomOf="@id/linearLayoutRating"
+            app:layout_constraintStart_toEndOf="@id/linearLayoutRating"
+            app:layout_constraintTop_toTopOf="@+id/linearLayoutRating" />
+
+        <TextView
+            android:id="@+id/tvProductPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="৳ 49999/-"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutRating" />
+
+        <TextView
+            android:id="@+id/tvProductDeletedPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:gravity="center"
+            android:paddingStart="4dp"
+            android:paddingEnd="2dp"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:text="৳ 520000/-"
+            app:layout_constraintBottom_toBottomOf="@id/tvProductPrice"
+            app:layout_constraintStart_toEndOf="@id/tvProductPrice" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="#3D3C3C"
+            app:layout_constraintBottom_toBottomOf="@id/tvProductDeletedPrice"
+            app:layout_constraintEnd_toEndOf="@id/tvProductDeletedPrice"
+            app:layout_constraintStart_toStartOf="@id/tvProductDeletedPrice"
+            app:layout_constraintTop_toTopOf="@id/tvProductDeletedPrice" />
+
+        <ImageView
+            android:id="@+id/ivCodIndicatorProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/cod_indicator"
+            app:layout_constraintBottom_toBottomOf="@+id/tvProductDeletedPrice"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tabViewPagerIndicator" />
+
+        <TextView
+            android:id="@+id/codIndicatorProductImageAvailable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Available"
+            android:textAppearance="?android:textAppearanceSmall"
+            app:layout_constraintEnd_toEndOf="@id/ivCodIndicatorProduct"
+            app:layout_constraintStart_toStartOf="@id/ivCodIndicatorProduct"
+            app:layout_constraintTop_toBottomOf="@id/ivCodIndicatorProduct" />
+
+        <LinearLayout
+            android:id="@+id/linerLayoutCouponRedemption"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="#FF3030"
+            android:gravity="right"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvProductPrice">
+
+            <TextView
+                android:id="@+id/tvCouponRedeemProduct"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Check price after Coupon Redemption"
+                android:textAlignment="center"
+                android:textColor="@android:color/white" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCouponRedeemProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/button_rectangle_background"
+                android:backgroundTint="@android:color/transparent"
+                android:text="Redeem"
+                app:rippleColor="@android:color/white"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

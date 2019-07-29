@@ -1,19 +1,19 @@
 package com.zakariahossain.ecomerceapp.ui.home;
 
 public class Category {
-    private String categoryIcon, categoryName;
+    private String categoryIconUrl, categoryName;
 
-    public Category(String categoryIcon, String categoryName) {
-        this.categoryIcon = categoryIcon;
+    public Category(String categoryIconUrl, String categoryName) {
+        this.categoryIconUrl = categoryIconUrl;
         this.categoryName = categoryName;
     }
 
-    public String getCategoryIcon() {
-        return categoryIcon;
+    public String getCategoryIconUrl() {
+        return categoryIconUrl;
     }
 
-    public void setCategoryIcon(String categoryIcon) {
-        this.categoryIcon = categoryIcon;
+    public void setCategoryIconUrl(String categoryIconUrl) {
+        this.categoryIconUrl = categoryIconUrl;
     }
 
     public String getCategoryName() {

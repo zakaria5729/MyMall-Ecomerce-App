@@ -4,19 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="aCategory"
             type="com.zakariahossain.ecomerceapp.ui.home.Category" />
     </data>
 
-    <com.google.android.material.card.MaterialCardView
+    <!--<com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:cardCornerRadius="3dp"
         app:cardElevation="3dp"
         app:cardPreventCornerOverlap="true"
-        app:cardUseCompatPadding="true">
+        app:cardUseCompatPadding="true">-->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
@@ -24,12 +23,13 @@
 
             <ImageView
                 android:id="@+id/ivCategoryIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
                 android:layout_marginTop="4dp"
                 app:layout_constraintBottom_toTopOf="@id/tvCategoryName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:categoryImageUrl="@{aCategory.categoryIconUrl}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.49"
                 app:srcCompat="@drawable/ic_home_24dp" />
@@ -49,6 +49,6 @@
                 tools:text="Electronics" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
+    <!--</com.google.android.material.card.MaterialCardView>-->
 
 </layout>

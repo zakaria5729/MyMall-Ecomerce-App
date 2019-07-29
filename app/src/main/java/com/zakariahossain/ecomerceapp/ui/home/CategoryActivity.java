@@ -1,74 +1,87 @@
 package com.zakariahossain.ecomerceapp.ui.home;
 
-import android.annotation.SuppressLint;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.BindingAdapter;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.ImageView;
+
 import com.bumptech.glide.Glide;
 import com.zakariahossain.ecomerceapp.R;
-import com.zakariahossain.ecomerceapp.databinding.FragmentHomeBinding;
+import com.zakariahossain.ecomerceapp.databinding.ActivityCategoryBinding;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragment extends Fragment {
+public class CategoryActivity extends AppCompatActivity {
+    ActivityCategoryBinding categoryBinding;
 
-    private FragmentHomeBinding homeBinding;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        categoryBinding = DataBindingUtil.setContentView(this, R.layout.activity_category);
 
-    public HomeFragment() {
-        // Required empty public constructor
+        setSupportActionBar(categoryBinding.categoryToolbar);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+            if (getIntent().getStringExtra("category_name") != null) {
+                getSupportActionBar().setTitle(getIntent().getStringExtra("category_name"));
+            }
+        }
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        homeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
-        return homeBinding.getRoot();
-    }
+    protected void onStart() {
+        super.onStart();
 
-    @SuppressLint("ClickableViewAccessibility")
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        layoutManager.setOrientation(RecyclerView.HORIZONTAL);
-        homeBinding.categoryRecyclerView.setLayoutManager(layoutManager);
-
-        CategoryAdapter categoryAdapter = new CategoryAdapter(getCategoryList());
-        homeBinding.categoryRecyclerView.setAdapter(categoryAdapter);
-        categoryAdapter.notifyDataSetChanged();
-
-        LinearLayoutManager manager = new LinearLayoutManager(getContext());
+        LinearLayoutManager manager = new LinearLayoutManager(this);
         manager.setOrientation(RecyclerView.VERTICAL);
-        homeBinding.homeRecyclerView.setLayoutManager(manager);
+        categoryBinding.categoryRecyclerView.setLayoutManager(manager);
 
         List<HomePageModel> homePageModelList = new ArrayList<>();
         homePageModelList.add(new HomePageModel(0, getSliderList()));
         homePageModelList.add(new HomePageModel(2, "Deals of the day", getHorizontalAndGridProductList()));
-        //homePageModelList.add(new HomePageModel(1, R.drawable.strip_ad, "#000000"));
+        homePageModelList.add(new HomePageModel(1, R.drawable.strip_ad, "#000000"));
         homePageModelList.add(new HomePageModel(3, "Deals of the day", getHorizontalAndGridProductList()));
 
         HomePageAdapter adapter = new HomePageAdapter(homePageModelList);
-        homeBinding.homeRecyclerView.setAdapter(adapter);
+        categoryBinding.categoryRecyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
-        homeBinding.executePendingBindings();
+        categoryBinding.executePendingBindings();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_search, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_search:
+                return true;
+
+            case android.R.id.home:
+                finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private List<HorizontalAndGridProduct> getHorizontalAndGridProductList() {
         List<HorizontalAndGridProduct> horizontalAndGridProductList = new ArrayList<>();
 
-        horizontalAndGridProductList.add(new HorizontalAndGridProduct("https://static.toiimg.com/photo/63393835/Vivo-Apex.jpg", "Redmi 5A", "SD 425 Processsor", "৳ 5999/-"));
         horizontalAndGridProductList.add(new HorizontalAndGridProduct("https://static.toiimg.com/photo/63393835/Vivo-Apex.jpg", "LookMi 5A", "SD 425 Processsor", "৳ 5999/-"));
         horizontalAndGridProductList.add(new HorizontalAndGridProduct("https://static.toiimg.com/photo/63393835/Vivo-Apex.jpg", "Redmi 5A", "SD 425 Processsor", "৳ 5999/-"));
         horizontalAndGridProductList.add(new HorizontalAndGridProduct("https://static.toiimg.com/photo/63393835/Vivo-Apex.jpg", "Redmi 5A", "SD 425 Processsor", "৳ 5999/-"));
@@ -99,32 +112,10 @@ public class HomeFragment extends Fragment {
         return sliderList;
     }
 
-    private List<Category> getCategoryList() {
-        List<Category> categoryList = new ArrayList<>();
-        categoryList.add(new Category("https://static.toiimg.com/photo/63393835/Vivo-Apex.jpg", "Home"));
-        categoryList.add(new Category("https://www.pinclipart.com/picdir/middle/345-3452565_web-app-video-stream-vector-old-tv-png.png", "Appliances"));
-        categoryList.add(new Category("https://static.toiimg.com/photo/63393835/Vivo-Apex.jpg", "Books"));
-        categoryList.add(new Category("https://www.pinclipart.com/picdir/middle/345-3452565_web-app-video-stream-vector-old-tv-png.png", "Furniture"));
-        categoryList.add(new Category("https://static.toiimg.com/photo/63393835/Vivo-Apex.jpg", "Shoes"));
-        categoryList.add(new Category("https://www.pinclipart.com/picdir/middle/345-3452565_web-app-video-stream-vector-old-tv-png.png", "Electronics"));
-        categoryList.add(new Category("https://static.toiimg.com/photo/63393835/Vivo-Apex.jpg", "Toys"));
-        categoryList.add(new Category("https://www.pinclipart.com/picdir/middle/345-3452565_web-app-video-stream-vector-old-tv-png.png", "Sports"));
-
-        return categoryList;
-    }
-
     @BindingAdapter("productImage")
     public static void loadImage(ImageView imageView, String imgUrl) {
         Glide.with(imageView.getContext())
                 .load(imgUrl)
-                .fitCenter()
-                .into(imageView);
-    }
-
-    @BindingAdapter("categoryImageUrl")
-    public static void loadCategoryIcon(ImageView imageView, String categoryIconUrl) {
-        Glide.with(imageView.getContext())
-                .load(categoryIconUrl)
                 .fitCenter()
                 .into(imageView);
     }
